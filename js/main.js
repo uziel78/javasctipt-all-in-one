@@ -1,36 +1,29 @@
-// Numbers
+// Math Methods and Properties
 
-// An integer is a whole number.
+console.log(Math.PI); //shows 3.14....
 
-const myNumber = 42;
+// Removes all decomals
+console.log(Math.trunc(Math.PI)); //returns 3
 
-const myFloat = 42.01;
+//rounds up/down to nearest
+console.log(Math.round(3.5)); //returns 4
 
-const myString = '42.123abc';
+// rounds up, no matter how small a decimal
+console.log(Math.ceil(3.5)); //returns 4
 
-//console.log(myNumber === myFloat);
+// rounds down, always
+console.log(Math.floor(3.5)); //returns 3
 
-// change string to number with Number fucntion
-// console.log(Number(myString) + 3);
+//two arguments, first base nimber and second exponent
+console.log(Math.pow(2, 4)); //returns 2^4 = 16
 
-// The Number.isInteger method determines if the passed value is an integer.
-//console.log(Number.isInteger(myNumber));
+//returns smalles number
+console.log(Math.min(3, 5, 7, 9)); //returns 3
 
-// The Number.parseFloat() method parses an argument and returns a floating point number.
-// If a number cannot be pardsed from the argument, it returns NaN.
-//console.log(Number.parseFloat(myString));
+//returns highest number
+console.log(Math.max(3, 5, 8)); //returns 8
 
-// Rounds up decimals to (x). Returns String Date, not number.
-//console.log(myFloat.toFixed(2));
-
-//converts argument to Integer, removes non.numeric characters and converts other data.ypes to numbers when possible
-//console.log(Number.parseInt(myString));
-
-// converts data to String type
-//console.log(typeof myFloat.toString());
-
-// The Number .isNaN() method determines wheter the passed value is NaN AND is type number:
-// Number.isNaN();
-
-// console.log(Number('Rune'));
-// console.log(isNaN('Rune'));
+//returns random number from 0 to 1, incliding 0, but not 1
+console.log(Math.random());
+//random number from 10
+console.log(Math.floor(Math.random() * 10) + 1);
