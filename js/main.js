@@ -1,44 +1,59 @@
-// ----- Your First Interactive Game
+// ----- Loops
 
-let playGame = confirm('Shall we play rock, paper or scissors?');
-if (playGame) {
-  //play
-  let playerChoice = prompt('Please enter Rock, Paper or Scissors.');
-  if (playerChoice) {
-    let playerOne = playerChoice.trim().toLowerCase();
-    if (
-      playerOne === 'rock' ||
-      playerOne === 'paper' ||
-      playerOne === 'scissors'
-    ) {
-      let computerChoice = Math.floor(Math.random() * 3 + 1);
-      let computer =
-        computerChoice === 1
-          ? 'rock'
-          : computerChoice === 2
-          ? 'paper'
-          : 'scissors';
+// ----- while loop
 
-      let result =
-        playerOne === computer
-          ? 'Tie Game!'
-          : playerOne === 'rock' && computer === 'paper'
-          ? `playerOne: ${playerOne}\nComputer: ${computer}\nComputer wins!`
-          : playerOne === 'paper' && computer === 'scissors'
-          ? `playerOne: ${playerOne}\nComputer: ${computer}\nComputer wins!`
-          : playerOne === 'scissors' && computer === 'rock'
-          ? `playerOne: ${playerOne}\nComputer: ${computer}\nComputer wins!`
-          : `playerOne: ${playerOne}\nComputer: ${computer}\nPlayer One wins!`;
-      alert(result);
-      //console.log(result);
-      let playAgain = confirm('Play Again?');
-      playAgain ? location.reload() : alert('Ok, thanks for playing.');
-    } else {
-      alert("you didn't enter rock, paper or scissors.");
-    }
-  } else {
-    alert('I guess you changed your mind. Maybe next time.');
+// let myNumber = 0;
+// while (myNumber < 50) {
+//   myNumber += 2;
+//   console.log(myNumber);
+// }
+
+// while lopp with conditional break
+// let name = 'Rune';
+// let counter = 0;
+// let myLetter;
+
+// while (true) {
+//   myLetter = name[counter];
+//   console.log(myLetter);
+//   if (myLetter === 'e') break;
+//   counter++;
+// }
+
+// ----- while loop with continue
+let name = 'Rune';
+let counter = 0;
+let myLetter;
+
+while (counter <= 3) {
+  myLetter = name[counter];
+  console.log(myLetter);
+  if (counter === 1) {
+    counter += 2;
+    continue;
   }
-} else {
-  alert('ok, maybe next time.');
+  if (myLetter === 'e') break;
+  counter++;
 }
+console.log(counter);
+
+//don't create an endless loop!
+
+// ----- do while loop
+
+//a do while block executes code block at least once
+// let myNumber = 50;
+// do {
+//   console.log(myNumber);
+// } while (myNumber < 50);
+
+// ----- For Loop
+
+// for (let i = 0; i <= 10; i++) {
+//   console.log(i);
+// }
+
+// let name = 'Rune';
+// for (let i = 0; i <= name.length; i++) {
+//   console.log(name.charAt(i));
+// }
