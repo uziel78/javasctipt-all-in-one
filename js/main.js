@@ -1,90 +1,89 @@
-// Conditionals: If Statements
+// ----- Switch Statements
 
-// if (condition) {
-// run code, skip if false
-// } else {
-// run different code if false
+// syntax
+// switch (expression OR value) {
+//     case choice 1:
+// run this code
+//         break;
+
+//     case choice2:
+// run this code
+//         break;
+
+// add as many cases as needed
+
+//     default:
+// run this code if no case matches
+// no need for a break here
 // }
 
-// ----- multiple if else use
+// ----- Example 1
 
-// let customerIsBanned = false;
-// let soup = 'chicken noodle soup';
-// let crackers = true;
-// let reply;
+// switch (2) {
+//   case 1:
+//     console.log('1');
+//     break;
 
-// if (customerIsBanned) {
-//   reply = 'No soup for you!';
-// } else if (soup && crackers) {
-//   reply = `Here is your order of ${soup} & cracers`;
-// } else if (soup) {
-//   reply = `Here is your order of ${soup}`;
-// } else {
-//   reply = `sorry, we're out of ${soup}`;
+//   case 2:
+//     console.log('2');
+//     break;
+
+//   case 3:
+//     console.log('3');
+//     break;
+
+//   default:
+//     console.log('No Match');
 // }
-// console.log(reply);
 
-// -----
+// ----- Example 2
 
-// let testScore = 89;
-// let grade;
+// switch (Math.floor(Math.random() * 5 + 1)) {
+//   case 1:
+//     console.log('1');
+//     break;
 
-// if (testScore >= 90) {
-//   grade = 'A';
-// } else if (testScore >= 80) {
-//   grade = 'B';
-// } else if (testScore >= 70) {
-//   grade = 'C';
-// } else if (testScore >= 60) {
-//   grade = 'D';
-// } else {
-//   grade = 'F';
+//   case 2:
+//     console.log('2');
+//     break;
+
+//   case 3:
+//     console.log('3');
+//     break;
+
+//   default:
+//     console.log('No Match');
 // }
-// console.log(grade);
 
-// ----- same as above  but with nested if statement in an else
+// ----- Example 3
 
-// let testScore = 50;
-// let grade;
-// let collegeStudent = true;
+let playerOne = 'scissors';
+let computer = 'rock';
 
-// if (testScore >= 90) {
-//   grade = 'A';
-// } else if (testScore >= 80) {
-//   grade = 'B';
-// } else if (testScore >= 70) {
-//   grade = 'C';
-// } else if (testScore >= 60) {
-//   grade = 'D';
-// } else {
-//   if (collegeStudent) {
-//     grade = 'U';
-//   } else {
-//     grade = 'F';
-//   }
-// }
-// console.log(grade);
+switch (playerOne) {
+  case computer:
+    console.log('Tie game!');
+    break;
 
-// ----- Decision Three! (Rock, Paper, Scissors)
+  case 'rock':
+    if (computer === 'paper') {
+      console.log('computer wins!');
+    } else {
+      console.log('playerOne wins!');
+    }
+    break;
 
-if (playerOne === computer) {
-  // tie game
-} else if (playerOne === 'rock') {
-  if (computer === 'paper') {
-    // computer wins
-  } else {
-    //playerOne wins
-  }
-} else if (playerOne === 'paper') {
-  if (computer === 'scissors') {
-    //computer wins
-  } else {
-    //playerOne wins
-  }
-} else {
-  if (computer === 'rock') {
-    //computer wins
-  } else {
-    //playerOne wins
-  }
+  case 'paper':
+    if (computer === 'scissors') {
+      console.log('computer wins!');
+    } else {
+      console.log('playerOne wins!');
+    }
+    break;
+  default:
+    if (computer === 'rock') {
+      console.log('computer wins!');
+    } else {
+      console.log('playerOne wins!');
+    }
 }
