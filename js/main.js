@@ -1,22 +1,44 @@
-// ----- User Input
+// ----- Your First Interactive Game
 
-// ----- Alert!
-//no data returned from input
-//alert('Hello World!!');
+let playGame = confirm('Shall we play rock, paper or scissors?');
+if (playGame) {
+  //play
+  let playerChoice = prompt('Please enter Rock, Paper or Scissors.');
+  if (playerChoice) {
+    let playerOne = playerChoice.trim().toLowerCase();
+    if (
+      playerOne === 'rock' ||
+      playerOne === 'paper' ||
+      playerOne === 'scissors'
+    ) {
+      let computerChoice = Math.floor(Math.random() * 3 + 1);
+      let computer =
+        computerChoice === 1
+          ? 'rock'
+          : computerChoice === 2
+          ? 'paper'
+          : 'scissors';
 
-// ----- Confirm!
-// returns true or fale values on click (in variable)
-//confirm('Ok === true\nCancel === False');
-// let myBoolean = confirm('Ok === true\nCancel === False');
-// console.log(myBoolean);
-
-// ----- Prompt!
-// cancel button returns null value.
-let name = prompt('please enter your name.');
-if (name) {
-  console.log(name.length);
-  console.log(name.trim().length);
-  console.log(name.trim());
+      let result =
+        playerOne === computer
+          ? 'Tie Game!'
+          : playerOne === 'rock' && computer === 'paper'
+          ? `playerOne: ${playerOne}\nComputer: ${computer}\nComputer wins!`
+          : playerOne === 'paper' && computer === 'scissors'
+          ? `playerOne: ${playerOne}\nComputer: ${computer}\nComputer wins!`
+          : playerOne === 'scissors' && computer === 'rock'
+          ? `playerOne: ${playerOne}\nComputer: ${computer}\nComputer wins!`
+          : `playerOne: ${playerOne}\nComputer: ${computer}\nPlayer One wins!`;
+      alert(result);
+      //console.log(result);
+      let playAgain = confirm('Play Again?');
+      playAgain ? location.reload() : alert('Ok, thanks for playing.');
+    } else {
+      alert("you didn't enter rock, paper or scissors.");
+    }
+  } else {
+    alert('I guess you changed your mind. Maybe next time.');
+  }
 } else {
-  console.log("You didn't enter your name");
+  alert('ok, maybe next time.');
 }
