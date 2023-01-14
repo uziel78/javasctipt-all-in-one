@@ -1,54 +1,22 @@
-// ----- Ternary Operator
+// ----- User Input
 
-//syntax
-//condition? ifTrue : ifFalse;
+// ----- Alert!
+//no data returned from input
+//alert('Hello World!!');
 
-// ----- Example 1
-// let soup;
-// let response = soup ? 'Yes we have soup' : 'Sorry, no soup today';
+// ----- Confirm!
+// returns true or fale values on click (in variable)
+//confirm('Ok === true\nCancel === False');
+// let myBoolean = confirm('Ok === true\nCancel === False');
+// console.log(myBoolean);
 
-// console.log(response);
-
-// ----- Example 2, chained ternary operators
-
-// let soup = 'chicken Noodle Soup';
-// let isCustomerBanned = false;
-
-// let soupAccess = isCustomerBanned
-//   ? 'Sorry, no soup for you!'
-//   : soup
-//   ? `Yes we have ${soup} today.`
-//   : 'Sorry, no soup today';
-
-// console.log(soupAccess);
-
-// ----- Example 3, Grading scale, multiple chained ternary operators
-
-// let testScore = 79;
-// let myGrade =
-//   testScore > 89
-//     ? 'A'
-//     : testScore > 79
-//     ? 'B'
-//     : testScore > 69
-//     ? 'C'
-//     : testScore > 59
-//     ? 'S'
-//     : 'F';
-// console.log(`My test grade is a ${myGrade}`);
-
-// ----- Rock, Paper Scissor ternary Operators, chained Ternary Operators
-
-let playerOne = 'rock';
-let computer = 'rock';
-let result =
-  playerOne === computer
-    ? 'Tie Game!'
-    : playerOne === 'rock' && computer === 'paper'
-    ? 'Computer wins!'
-    : playerOne === 'paper' && computer === 'scissors'
-    ? 'Computer wins!'
-    : playerOne === 'scissors' && computer === 'rock'
-    ? 'Computer Wins!'
-    : 'playerOne Wins!';
-console.log(result);
+// ----- Prompt!
+// cancel button returns null value.
+let name = prompt('please enter your name.');
+if (name) {
+  console.log(name.length);
+  console.log(name.trim().length);
+  console.log(name.trim());
+} else {
+  console.log("You didn't enter your name");
+}
