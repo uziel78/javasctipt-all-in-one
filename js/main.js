@@ -1,59 +1,52 @@
-// ----- Loops
+// ----- Functions
 
-// ----- while loop
+// Functions provide reusable code!
 
-// let myNumber = 0;
-// while (myNumber < 50) {
-//   myNumber += 2;
-//   console.log(myNumber);
+// remember Methods = Built-in fuactions
+
+// ----- Function Declaration Syntax -----
+
+// function sum(num1, num2) {
+//   //contingency in case of one attribute
+//   if (num2 === undefined) {
+//     return num1 + num1;
+//   }
+//   return num1 + num2;
 // }
 
-// while lopp with conditional break
-// let name = 'Rune';
-// let counter = 0;
-// let myLetter;
+// console.log(sum(2, 5));
+// // one attribute
+// console.log(sum(2));
 
-// while (true) {
-//   myLetter = name[counter];
-//   console.log(myLetter);
-//   if (myLetter === 'e') break;
-//   counter++;
+// ----- function to cut out part of string -----
+
+// function getUserNameFromEmail(email) {
+//   return email.slice(0, email.indexOf('@'));
 // }
 
-// ----- while loop with continue
-let name = 'Rune';
-let counter = 0;
-let myLetter;
+// console.log(getUserNameFromEmail('dilbert@getUserNameFromEmail.com'));
+// console.log(getUserNameFromEmail('user@github.com'));
 
-while (counter <= 3) {
-  myLetter = name[counter];
-  console.log(myLetter);
-  if (counter === 1) {
-    counter += 2;
-    continue;
-  }
-  if (myLetter === 'e') break;
-  counter++;
-}
-console.log(counter);
+// ----- Anonymous Function Examples -----
 
-//don't create an endless loop!
+// const getUserNameFromEmail = function (email) {
+//   return email.slice(0, email.indexOf('@'));
+// };
 
-// ----- do while loop
+// console.log(getUserNameFromEmail('rune@grunesemail.com'));
 
-//a do while block executes code block at least once
-// let myNumber = 50;
-// do {
-//   console.log(myNumber);
-// } while (myNumber < 50);
+// ----- Arrow Function -----
 
-// ----- For Loop
+// const getUserNameFromEmail = (email) => {
+//   return email.slice(0, email.indexOf('@'));
+// };
 
-// for (let i = 0; i <= 10; i++) {
-//   console.log(i);
-// }
+// console.log(getUserNameFromEmail('gunnar@gunnarssemail.com'));
 
-// let name = 'Rune';
-// for (let i = 0; i <= name.length; i++) {
-//   console.log(name.charAt(i));
-// }
+// ----- Arrow Function that combines multiple methods (captial first letter + remaining lowercase of any string)
+
+const toProperCase = (name) => {
+  return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+};
+
+console.log(toProperCase('rUnE'));
