@@ -1,89 +1,54 @@
-// ----- Switch Statements
+// ----- Ternary Operator
 
-// syntax
-// switch (expression OR value) {
-//     case choice 1:
-// run this code
-//         break;
-
-//     case choice2:
-// run this code
-//         break;
-
-// add as many cases as needed
-
-//     default:
-// run this code if no case matches
-// no need for a break here
-// }
+//syntax
+//condition? ifTrue : ifFalse;
 
 // ----- Example 1
+// let soup;
+// let response = soup ? 'Yes we have soup' : 'Sorry, no soup today';
 
-// switch (2) {
-//   case 1:
-//     console.log('1');
-//     break;
+// console.log(response);
 
-//   case 2:
-//     console.log('2');
-//     break;
+// ----- Example 2, chained ternary operators
 
-//   case 3:
-//     console.log('3');
-//     break;
+// let soup = 'chicken Noodle Soup';
+// let isCustomerBanned = false;
 
-//   default:
-//     console.log('No Match');
-// }
+// let soupAccess = isCustomerBanned
+//   ? 'Sorry, no soup for you!'
+//   : soup
+//   ? `Yes we have ${soup} today.`
+//   : 'Sorry, no soup today';
 
-// ----- Example 2
+// console.log(soupAccess);
 
-// switch (Math.floor(Math.random() * 5 + 1)) {
-//   case 1:
-//     console.log('1');
-//     break;
+// ----- Example 3, Grading scale, multiple chained ternary operators
 
-//   case 2:
-//     console.log('2');
-//     break;
+// let testScore = 79;
+// let myGrade =
+//   testScore > 89
+//     ? 'A'
+//     : testScore > 79
+//     ? 'B'
+//     : testScore > 69
+//     ? 'C'
+//     : testScore > 59
+//     ? 'S'
+//     : 'F';
+// console.log(`My test grade is a ${myGrade}`);
 
-//   case 3:
-//     console.log('3');
-//     break;
+// ----- Rock, Paper Scissor ternary Operators, chained Ternary Operators
 
-//   default:
-//     console.log('No Match');
-// }
-
-// ----- Example 3
-
-let playerOne = 'scissors';
+let playerOne = 'rock';
 let computer = 'rock';
-
-switch (playerOne) {
-  case computer:
-    console.log('Tie game!');
-    break;
-
-  case 'rock':
-    if (computer === 'paper') {
-      console.log('computer wins!');
-    } else {
-      console.log('playerOne wins!');
-    }
-    break;
-
-  case 'paper':
-    if (computer === 'scissors') {
-      console.log('computer wins!');
-    } else {
-      console.log('playerOne wins!');
-    }
-    break;
-  default:
-    if (computer === 'rock') {
-      console.log('computer wins!');
-    } else {
-      console.log('playerOne wins!');
-    }
-}
+let result =
+  playerOne === computer
+    ? 'Tie Game!'
+    : playerOne === 'rock' && computer === 'paper'
+    ? 'Computer wins!'
+    : playerOne === 'paper' && computer === 'scissors'
+    ? 'Computer wins!'
+    : playerOne === 'scissors' && computer === 'rock'
+    ? 'Computer Wins!'
+    : 'playerOne Wins!';
+console.log(result);
