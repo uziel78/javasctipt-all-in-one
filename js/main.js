@@ -4,4 +4,4 @@
 
 const myName = 'Rune';
 // remember "R" is inexed at 0 in a String
-console.log(myName.charAt(Math.floor(Math.random() * 4)));
+console.log(myName.charAt(Math.floor(Math.random() * myName.length)));
