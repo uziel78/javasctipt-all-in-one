@@ -1,106 +1,119 @@
-// ----- Refactor Game with Arrays ----- //
+// ----- Objects ----- //
 
-// ----- Rock, Paper Scissors Refactored with Functions
+// ----- Object Syntax
+//key-value pairs in curly braces
 
-const initGame = () => {
-  const startGame = confirm('Shall we play rock, paper or scissors?');
-  startGame ? playGame() : alert('ok, maybe next time.');
+const myObj = { name: 'Rune' };
+
+const anotherObj = {
+  alive: true,
+  answer: 42,
+  hobbies: ['Eat', 'Sleep', 'Code'],
+  beverage: {
+    morning: 'Coffee',
+    afternoon: 'Iced Tea',
+  },
+  //action becomes a method
+  //   action: function () {
+  //     return 'Hello World!';
+  //   },
+  action: function () {
+    return `Time for ${this.beverage.morning}`;
+  },
 };
 
-// ----- Game Flow Function -----
-const playGame = () => {
-  while (true) {
-    let playerChoice = getPlayerChoice();
-    playerChoice = formatPlayerChoice(playerChoice);
-    if (playerChoice === '') {
-      invalidChoice();
-      continue;
-    }
-    if (!playerChoice) {
-      decidedNotToPlay();
-      break;
-    }
-    playerChoice = evaluatePlayerChoice(playerChoice);
-    if (!playerChoice) {
-      invalidChoice();
-      continue;
-    }
-    const computerChoice = getComputerChoice();
-    const result = determineWinner(playerChoice, computerChoice);
-    displayResult(result);
-    if (askToPlayAgain()) {
-      continue;
-    } else {
-      thanksForPlaying();
-      break;
-    }
-  }
+// console.log(anotherObj.beverage.morning);
+// console.log(anotherObj['beverage']['morning']);
+console.log(anotherObj.action());
+
+// ----- Example 2 -----
+
+const vehicle = {
+  wheels: 4,
+  engine: function () {
+    return 'Vreooom!';
+  },
 };
 
-// ----- Helper Functions -----
+// const truck = Object.create(vehicle);
+// truck.doors = 2;
+// console.log(truck);
+// console.log(truck.wheels); // Inheritance example
+// console.log(truck.engine());
 
-const getPlayerChoice = () => {
-  return prompt('Please enter rock, paper or scissors.');
+const car = Object.create(vehicle);
+car.doors = 4;
+car.engine = function () {
+  return 'Whoooosh!'; //Inherited method from vehicle overwritten
+};
+//console.log(car.engine());
+//console.log(car.wheels);
+
+// const tesla = Object.create(car);
+// tesla.engine = function () {
+//   return 'Shhhh....';
+// };
+// console.log(tesla.wheels);
+// console.log(tesla.engine());
+
+// ----- Example 3 -----
+
+// const band = {
+//   vocals: 'Robert Plant',
+//   guitar: 'Jimmy Page',
+//   bass: 'John Paul Jones',
+//   drums: 'John Bonham',
+// };
+// add to object
+//band.keyboards = 'Nutcase';
+
+// add method
+// band.start = function() {
+//     return XXX
+// }
+
+//delete property (key-value pair)
+//delete band.drums;
+
+// check for properties
+// console.log(band.hasOwnProperty('drums'));
+
+// console.log(Object.keys(band));
+// console.log(Object.values(band));
+
+//loop for objects (called For In loop), shows keys
+// for (let job in band) {
+//   console.log(band[job]);
+// }
+
+// shows keys and values
+// for (let job in band) {
+//   console.log(`On ${job}, it's ${band[job]}!`);
+// }
+
+// ----- Destructuring Objects
+
+const band = {
+  vocals: 'Robert Plant',
+  guitar: 'Jimmy Page',
+  bass: 'John Paul Jones',
+  drums: 'John Bonham',
 };
 
-const formatPlayerChoice = (playerChoice) => {
-  if (playerChoice || playerChoice === '') {
-    return playerChoice.trim().toLowerCase();
-  } else {
-    return false;
-  }
-};
+// myVariable is pulled out of band object and assigned as a variable (guitar: is ther becasue key-value pair)
+// const { guitar: myVariable } = band;
+// console.log(myVariable);
 
-const decidedNotToPlay = () => {
-  alert('I guess you chaanged your mind. Maybe next time..');
-};
+// as above, but multiple variables
+const { guitar: myVariable, bass: secondVariable } = band;
+console.log(myVariable, secondVariable);
 
-const evaluatePlayerChoice = (playerChoice) => {
-  if (
-    playerChoice === 'rock' ||
-    playerChoice === 'paper' ||
-    playerChoice === 'scissors'
-  ) {
-    return playerChoice;
-  } else {
-    return false;
-  }
-};
+//alternate method, acceses the values of the keys due to naming them the same as the keys of the object
+const { vocals, guitar, bass, drums } = band;
+console.log(vocals, guitar, bass, drums);
 
-const invalidChoice = () => {
-  alert("You didn't enter rock, paper, or scissors.");
-};
-
-const getComputerChoice = () => {
-  const randomNumber = Math.floor(Math.random() * 3);
-  const rpsArray = ['rock', 'paper', 'scissors'];
-  return rpsArray[randomNumber];
-};
-
-const determineWinner = (player, computer) => {
-  const winner =
-    player === computer
-      ? 'Tie Game!'
-      : player === 'rock' && computer === 'paper'
-      ? `player: ${player}\nComputer: ${computer}\nComputer wins!`
-      : player === 'paper' && computer === 'scissors'
-      ? `player: ${player}\nComputer: ${computer}\nComputer wins!`
-      : player === 'scissors' && computer === 'rock'
-      ? `player: ${player}\nComputer: ${computer}\nComputer wins!`
-      : `player: ${player}\nComputer: ${computer}\nThe Player wins!`;
-  return winner;
-};
-
-const displayResult = (result) => {
-  alert(result);
-};
-
-const askToPlayAgain = () => {
-  return confirm('Play Again?');
-};
-
-const thanksForPlaying = () => {
-  alert('Ok, thanks for playing.');
-};
-
-initGame();
+//pulls out vocals value out of the bands object
+function sings({ vocals }) {
+  return `${vocals} sings!`;
+}
+console.log(sings(band));
