@@ -1,74 +1,105 @@
-// ----- Scope
+// ----- Arrays ----- //
 
-// var, let and const
+//const myArray = [];
 
-//var can be overwritten, no errors. x can be re-assigned.
-// var x = 1;
-// var x = 2;
+//add elements to an array
 
-// console.log(x);
+// myArray[0] = 'Rune';
+// myArray[1] = 1001;
+// myArray[2] = false;
 
-//let throws an Syntax error as x has already been declared. x can be re-assigned.
-// let x = 1;
-// let x = 2;
+// ----- refer to array
+//console.log(myArray);
 
-//const cannot be overwritten, nor re.assigned. Throws an error in both cases.
-// console.log(x);
-// const x = 1;
-// x = 2;
-// console.log(x);
+//----- length property
+//console.log(myArray.length);
 
-// ----- Global Scope -----
+// ----- last element
+//console.log(myArray[myArray.length - 1]);
 
-//var, let and const are all global variables when defined in the global scope.
-// var x = 1;
-// let y = 2;
-// const z = 3;
+// ----- any one item
+//console.log(myArray[1]);
 
-// ----- Local Scope (Block Scope or Function scope)-----
-//must console.log() in same scope
+// ----- add to array
+//myArray.push('Christmas');
+//console.log(myArray);
 
-//Function
-// function myFunc() {
-//   const z = 5;
-//   console.log(z);
+// ----- remove last item from array
+//myArray.pop();
+//console.log(myArray);
 
-//   // Block (includes if statements, loops, switch statements, etc)
-//   {
-//     let y = 4;
-//     const x = 3;
-//     console.log(y);
-//   }
-// }
-// myFunc();
+// ----- take out last item and assiign to variable
+//const lastItem = myArray.pop();
+//console.log(lastItem);
 
-// ----- Example 2 -----
+// ----- add first item of array
+//myArray.unshift(42);
+//console.log(myArray);
 
-// global scope
+//the same below also goes for push
+// const newLength = myArray.unshift(42);
+// console.log(newLength);
 
-//values pulled from parent(s) if not local
+// ----- remove from front of the Array
+// myArray.shift();
+// console.log(myArray);
 
-var x = 1; //function scoped
-let y = 2; //bloack scoped
-const z = 3;
+//take out of array and assign to variable
+// const firstItem = myArray.shift();
+// console.log(firstItem);
+// console.log(myArray); //verify removal
 
-console.log(`global: ${x}`);
-console.log(`global: ${y}`);
-console.log(`global: ${z}`);
+// ----- remove item from middle of array (leaves empty space in array with undefined data!)
+// delete myArray[1];
+// console.log(myArray);
 
-function myFunc() {
-  var x = 10;
-  const z = 5;
+// ----- remove and replace item in array (the corerct way). Surgical removal of one or more coherent positions in an Array
+//myArray.splice(1, 1); //remove one element from the 1 position
+//console.log(myArray);
 
-  {
-    var x = 11; // function scoped
-    const z = 6; // block scoped
-    console.log(`Block: ${x}`);
-    console.log(`Block: ${y}`);
-    console.log(`Block: ${z}`);
-  }
-  console.log(`function: ${x}`);
-  console.log(`function: ${y}`);
-  console.log(`function: ${z}`);
-}
-myFunc();
+// can be used to replace values:
+//myArray.splice(1, 1, 42); //1st position, 1 item, replaced with number 42
+//myArray.splice(1, 0, 42); // fistposition, add without deleting (0), number 42
+//console.log(myArray);
+
+// ----- part 2 -----
+
+//slice method example
+//const myArray = ['A', 'B', 'C', 'D', 'E', 'F'];
+//console.log(myArray);
+
+//const newArray = myArray.slice(2, 5); //new array starts at position 2, ends at position 5 (not including position 5)
+//onsole.log(newArray);
+
+// ----- reverse method
+//myArray.reverse(); //does not create a new array
+//console.log(myArray);
+
+// ----- join method
+//myArray.join();
+//const newString = myArray.join(); //all elements in array becomes one String
+//console.log(newString);
+
+// ----- split method (string method, not array method). Reverses the join method above in this case.
+//const newArray = newString.split(','); //creates new array!
+//console.log(newArray);
+
+// ----- part 3 -----
+
+// ----- combining arrays with concat method
+const myArrayA = ['A', 'B', 'C'];
+const myArrayB = ['D', 'E', 'F'];
+
+//const newArray = myArrayB.concat(myArrayA);
+//console.log(newArray);
+
+// ----- The Spread operator (newer way of doing the above)
+const newArray = [...myArrayA, ...myArrayB];
+console.log(newArray);
+//spread operators (...) takes the individual elements from the
+// two above arrays and combines them in a new array, instead of making two nested arrays (see below)
+const nestedArrays = [myArrayA, myArrayB];
+console.log(nestedArrays);
+
+// ----- how to log deeper into nested arrays
+console.log(nestedArrays[0][1]); //logs letter B from the fist nested array and position 1 in that array
