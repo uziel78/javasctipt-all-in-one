@@ -1,52 +1,74 @@
-// ----- Functions
+// ----- Scope
 
-// Functions provide reusable code!
+// var, let and const
 
-// remember Methods = Built-in fuactions
+//var can be overwritten, no errors. x can be re-assigned.
+// var x = 1;
+// var x = 2;
 
-// ----- Function Declaration Syntax -----
+// console.log(x);
 
-// function sum(num1, num2) {
-//   //contingency in case of one attribute
-//   if (num2 === undefined) {
-//     return num1 + num1;
+//let throws an Syntax error as x has already been declared. x can be re-assigned.
+// let x = 1;
+// let x = 2;
+
+//const cannot be overwritten, nor re.assigned. Throws an error in both cases.
+// console.log(x);
+// const x = 1;
+// x = 2;
+// console.log(x);
+
+// ----- Global Scope -----
+
+//var, let and const are all global variables when defined in the global scope.
+// var x = 1;
+// let y = 2;
+// const z = 3;
+
+// ----- Local Scope (Block Scope or Function scope)-----
+//must console.log() in same scope
+
+//Function
+// function myFunc() {
+//   const z = 5;
+//   console.log(z);
+
+//   // Block (includes if statements, loops, switch statements, etc)
+//   {
+//     let y = 4;
+//     const x = 3;
+//     console.log(y);
 //   }
-//   return num1 + num2;
 // }
+// myFunc();
 
-// console.log(sum(2, 5));
-// // one attribute
-// console.log(sum(2));
+// ----- Example 2 -----
 
-// ----- function to cut out part of string -----
+// global scope
 
-// function getUserNameFromEmail(email) {
-//   return email.slice(0, email.indexOf('@'));
-// }
+//values pulled from parent(s) if not local
 
-// console.log(getUserNameFromEmail('dilbert@getUserNameFromEmail.com'));
-// console.log(getUserNameFromEmail('user@github.com'));
+var x = 1; //function scoped
+let y = 2; //bloack scoped
+const z = 3;
 
-// ----- Anonymous Function Examples -----
+console.log(`global: ${x}`);
+console.log(`global: ${y}`);
+console.log(`global: ${z}`);
 
-// const getUserNameFromEmail = function (email) {
-//   return email.slice(0, email.indexOf('@'));
-// };
+function myFunc() {
+  var x = 10;
+  const z = 5;
 
-// console.log(getUserNameFromEmail('rune@grunesemail.com'));
-
-// ----- Arrow Function -----
-
-// const getUserNameFromEmail = (email) => {
-//   return email.slice(0, email.indexOf('@'));
-// };
-
-// console.log(getUserNameFromEmail('gunnar@gunnarssemail.com'));
-
-// ----- Arrow Function that combines multiple methods (captial first letter + remaining lowercase of any string)
-
-const toProperCase = (name) => {
-  return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
-};
-
-console.log(toProperCase('rUnE'));
+  {
+    var x = 11; // function scoped
+    const z = 6; // block scoped
+    console.log(`Block: ${x}`);
+    console.log(`Block: ${y}`);
+    console.log(`Block: ${z}`);
+  }
+  console.log(`function: ${x}`);
+  console.log(`function: ${y}`);
+  console.log(`function: ${z}`);
+}
+myFunc();
