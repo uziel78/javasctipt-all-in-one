@@ -1,29 +1,36 @@
-// ----- Modules ----- //
+// ----- Higher Order Functions ----- //
 
-// type="module" automatically applies "defer" (no need to have link at end of Body) and "use strict".
+// A higher order function is a function that does at least one of the following:
+// 1. Takes one or more functions as an argument (parameter)
+// 2. Returns a function as the result.
 
 // ----- Example 1 -----
 
-// import playGuitar from './guitars.js';
-// import { shredding as shred, plucking } from './guitars.js';
+import { posts } from './data.js';
 
-// console.log(playGuitar());
-// console.log(shred(), plucking());
+//forEach
+//JSON data can be gotten from from "https://jsonplaceholder.typicode.com/posts" //practice API
 
-// ----- Example 2 -----
-//alternate import options
-//import * as Guitars from './guitars.js';
+//forEach
+posts.forEach((post) => {
+  console.log(post);
+});
+console.clear();
 
-//the default export must be named default (so no default export might be optimal)
-// console.log(Guitars.default());
-// console.log(Guitars.shredding());
-// console.log(Guitars.plucking());
+//filter
+const filteredPosts = posts.filter((post) => {
+  return post.userId === 10;
+});
+console.log(filteredPosts);
 
-// ----- Example 3 -----
+//map
+const mappedPosts = filteredPosts.map((post) => {
+  return post.id * 10;
+});
+console.log(mappedPosts);
 
-import User from './user.js';
-
-const me = new User('email@email.com', 'rune');
-
-console.log(me);
-console.log(me.greeting());
+//reduce
+const reducedPostsValue = mappedPosts.reduce((sum, posts) => {
+  return sum + posts;
+});
+console.log(reducedPostsValue);
