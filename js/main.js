@@ -1,71 +1,29 @@
-// ----- Web Storage API ----- //
+// ----- Modules ----- //
 
-// Not part of the DOM -refers to the Window API
-// Available to JS via the global variable window
-
-//We do not have to type Window. It is implied.
-
-//example
-//window.alert('OK'); //same as alert("OK")
-
-// url of a website
-//window.location //same as location
-//alert(location); //responds with "http://127.0.0:5500/" here in Live Server.
-
-// ----- Local Storage -----
-//stores persistent data in browser
-
-// accessed via
-//localStorage.localStorage
-
-// ----- Session Storage -----
-// data only kept while user is in the session
-
-//accessed via
-//localStorage.sessionStorage
+// type="module" automatically applies "defer" (no need to have link at end of Body) and "use strict".
 
 // ----- Example 1 -----
 
-const myArray = ['eat', 'sleep', 'code'];
+// import playGuitar from './guitars.js';
+// import { shredding as shred, plucking } from './guitars.js';
 
-const myObject = {
-  name: 'Rune',
-  hobbies: ['eat', 'slep', 'code'],
-  logName: function () {
-    console.log(this.name);
-  },
-};
+// console.log(playGuitar());
+// console.log(shred(), plucking());
 
-//myObject.logName();
+// ----- Example 2 -----
+//alternate import options
+//import * as Guitars from './guitars.js';
 
-// sessionStorage.setItem('mySessionStore', myObject);
-// const mySessionData = sessionStorage.getItem('mySessionStore');
-// console.log(mySessionData);
+//the default export must be named default (so no default export might be optimal)
+// console.log(Guitars.default());
+// console.log(Guitars.shredding());
+// console.log(Guitars.plucking());
 
-// sessionStorage.setItem('mySessionStore', myArray);
-// const mySessionData = sessionStorage.getItem('mySessionStore');
-// console.log(mySessionData);
+// ----- Example 3 -----
 
-//above conclusion: object stringified and corrupted when turned to string, array becomes string.
-//data to Session and localstorage should be stored as JSON data
+import User from './user.js';
 
-//note that anonymous function (all methods) in object is lost
-// sessionStorage.setItem('mySessionStore', JSON.stringify(myObject));
-// const mySessionData = JSON.parse(sessionStorage.getItem('mySessionStore'));
-// console.log(mySessionData);
+const me = new User('email@email.com', 'rune');
 
-localStorage.setItem('myLocalStore', JSON.stringify(myArray));
-//remove item
-//localStorage.removeItem('myLocalStore');
-//remove all items
-//localStorage.clear();
-const key = localStorage.key(0);
-//log number of keys in localstorage
-const storeLength = localStorage.length;
-const myLocalData = JSON.parse(localStorage.getItem('myLocalStore'));
-
-console.log(myLocalData);
-console.log(key);
-console.log(storeLength);
-
-//only change for localStorage is changing sessionStorage to localStorage
+console.log(me);
+console.log(me.greeting());
