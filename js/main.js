@@ -1,17 +1,12 @@
-// ----- Javascript Classes ----- //
+// ----- Javascript Event Listeners ----- //
 
-class Pizza {
-  constructor(pizzaType) {
-    this.type = pizzaType;
-    this.size = 'medium';
-    this.crust = 'original';
+document.addEventListener('readystatechange', (event) => {
+  if (event.target.readyState === 'complete') {
+    console.log('readystete: complete');
+    initApp();
   }
-  bake() {
-    console.log(
-      `Baking a ${this.size} ${this.crust} ${this.type} crust pizza.`
-    );
-  }
-}
+});
 
-const myPizza = new Pizza('pepperoni');
-myPizza.bake();
+const initApp = () => {
+  console.log('Hello World!');
+};
